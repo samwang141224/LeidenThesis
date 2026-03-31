@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leiden Thesis Upload</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="header-logo" aria-hidden="true">📖</div>
+    <div>
+      <h1>Leiden Thesis Portal</h1>
+      <p class="subtitle">Upload &amp; view your thesis PDF in the browser</p>
+    </div>
+  </header>
+
+  <!-- ===== Main Content ===== -->
+  <main>
+
+    <!-- Upload card -->
+    <section class="upload-card" aria-labelledby="upload-heading">
+      <h2 id="upload-heading">📂 Select Your Thesis PDF</h2>
+
+      <div class="drop-zone" id="drop-zone" role="button" tabindex="0"
+           aria-label="Drop a PDF here or click to browse">
+        <input type="file" id="file-input" accept="application/pdf"
+               aria-label="Choose PDF file" />
+        <span class="drop-icon" aria-hidden="true">📄</span>
+        <p><strong>Drag &amp; drop</strong> your PDF here, or <strong>click to browse</strong></p>
+        <p style="margin-top:.4rem;font-size:.8rem;">Supports PDF files only</p>
+      </div>
+
+      <!-- Accepted format chips -->
+      <div class="upload-meta" aria-hidden="true">
+        <span class="meta-chip">✔ PDF format</span>
+        <span class="meta-chip">✔ Any file size</span>
+        <span class="meta-chip">✔ No data sent to server</span>
+      </div>
+
+      <!-- Selected file info -->
+      <div id="file-info" aria-live="polite">
+        <span aria-hidden="true">✅</span>
+        <span id="file-name" class="file-name"></span>
+        <span id="file-size" class="file-size"></span>
+        <button id="btn-clear" title="Remove file" aria-label="Remove selected file">✕</button>
+      </div>
+    </section>
+
+    <!-- Loading indicator -->
+    <div id="loader" class="loader" role="status" aria-label="Loading PDF">
+      <div class="spinner"></div>
+      <span>Loading PDF…</span>
+    </div>
+
+    <!-- Empty state (shown before any file is chosen) -->
+    <div id="empty-state" class="empty-state">
+      <span class="empty-icon" aria-hidden="true">🎓</span>
+      <p>Your thesis will appear here once you select a PDF file above.</p>
+    </div>
+
+    <!-- PDF viewer -->
+    <section id="viewer-card" class="viewer-card" aria-labelledby="viewer-heading">
+      <div class="viewer-toolbar">
+        <span id="doc-title" aria-live="polite">No file selected</span>
+        <button id="btn-zoom-out" title="Zoom out" aria-label="Zoom out">
+          <span aria-hidden="true">−</span> <span class="sr-only">Zoom Out</span> Zoom
+        </button>
+        <button id="btn-zoom-in"  title="Zoom in"  aria-label="Zoom in">
+          <span aria-hidden="true">+</span> <span class="sr-only">Zoom In</span> Zoom
+        </button>
+        <button id="btn-fullscreen" title="Fullscreen" aria-label="View fullscreen">
+          <span aria-hidden="true">⛶</span> <span class="sr-only">Fullscreen</span> Fullscreen
+        </button>
+      </div>
+      <iframe id="pdf-frame"
+              title="Thesis PDF viewer"
+              aria-label="PDF document viewer">
+      </iframe>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>Leiden Thesis Portal &mdash; All processing happens locally in your browser. No files are uploaded to any server.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
